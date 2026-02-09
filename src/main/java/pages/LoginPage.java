@@ -85,4 +85,22 @@ public class LoginPage{
 
     }
 
+    public String verifyLoginWithMultipleCredentials(String username, String password) throws IOException {
+
+        wait.until(ExpectedConditions.visibilityOf(loginBtn));
+
+        usernameInputField.sendKeys(username);
+        passwordInputField.sendKeys(password);
+        loginBtn.click();
+
+        try {
+            wait.until(ExpectedConditions.urlContains("dashboard"));
+        }catch (TimeoutException e){
+            e.printStackTrace();
+        }
+
+        return getDriver().getCurrentUrl();
+
+    }
+
 }
