@@ -51,6 +51,7 @@ Selenium_Framework_OrangeHRM
 ```
 
 📊 CI/CD Integration (Jenkins)
+
 The project utilizes a 5-stage Jenkins Pipeline to automate the testing lifecycle:
 
 Tool Install - Configures the environment (JDK/Maven).
@@ -65,7 +66,9 @@ Notifications - Sends automated SMTP email reports upon completion.
 
 
 
+
 ✨ Best Practices
+
 ✅ Listener Pattern: AllureListener catches failures and skips automatically.
 
 ✅ Byte Array Screenshots: Uses memory-efficient byte[] for attaching UI evidence to reports.
