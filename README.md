@@ -57,9 +57,6 @@ The project utilizes a **5-stage Jenkins Pipeline** to automate the testing life
 
 ### Allure Reporting Dashboard
 
-### Jenkins Pipeline Stage View
-<img width="960" height="470" alt="{EBC564AA-6D55-4EC4-BB63-B65966FA384D}" src="https://github.com/user-attachments/assets/df11f180-30f0-4c1a-9141-f563654ce713" />
-
 * **Tool Install** — Configures the environment (JDK/Maven).
 * **Checkout** — Pulls the latest code from GitHub.
 * **Build & Test** — Executes `mvn clean test`.
