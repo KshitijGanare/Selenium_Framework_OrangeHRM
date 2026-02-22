@@ -64,8 +64,12 @@ Generate Report - Compiles Allure Results into a visual dashboard.
 Notifications - Sends automated SMTP email reports upon completion.
 
 
+
 ✨ Best Practices
 ✅ Listener Pattern: AllureListener catches failures and skips automatically.
+
 ✅ Byte Array Screenshots: Uses memory-efficient byte[] for attaching UI evidence to reports.
+
 ✅ ThreadLocal Driver: Ensures thread-safety for parallel test execution.
+
 ✅ Clean Builds: Automatic cleanup of old results via Maven Clean plugin.
