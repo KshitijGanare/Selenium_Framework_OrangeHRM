@@ -49,30 +49,28 @@ Selenium_Framework_OrangeHRM
 └── pom.xml                 # Maven dependencies
 
 ```
+---
 
-📊 CI/CD Integration (Jenkins)
+## 📊 CI/CD Integration (Jenkins)
 
-The project utilizes a 5-stage Jenkins Pipeline to automate the testing lifecycle:
+The project utilizes a **5-stage Jenkins Pipeline** to automate the testing lifecycle:
 
-Tool Install - Configures the environment (JDK/Maven).
+### Allure Reporting Dashboard
 
-Checkout - Pulls the latest code from GitHub.
+* **Tool Install** — Configures the environment (JDK/Maven).
+* **Checkout** — Pulls the latest code from GitHub.
+* **Build & Test** — Executes `mvn clean test`.
+* **Generate Report** — Compiles Allure Results into a visual dashboard.
+* **Notifications** — Sends automated SMTP email reports upon completion.
 
-Build & Test - Executes mvn clean test.
+---
 
-Generate Report - Compiles Allure Results into a visual dashboard.
+## ✨ Best Practices
 
-Notifications - Sends automated SMTP email reports upon completion.
+* ✅ **Listener Pattern:** `AllureListener` catches failures and skips automatically.
+* ✅ **Byte Array Screenshots:** Uses memory-efficient `byte[]` for attaching UI evidence to reports.
+* ✅ **ThreadLocal Driver:** Ensures thread-safety for parallel test execution.
+* ✅ **Clean Builds:** Automatic cleanup of old results via Maven Clean plugin.
 
 
 
-
-✨ Best Practices
-
-✅ Listener Pattern: AllureListener catches failures and skips automatically.
-
-✅ Byte Array Screenshots: Uses memory-efficient byte[] for attaching UI evidence to reports.
-
-✅ ThreadLocal Driver: Ensures thread-safety for parallel test execution.
-
-✅ Clean Builds: Automatic cleanup of old results via Maven Clean plugin.
