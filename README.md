@@ -52,10 +52,15 @@ Selenium_Framework_OrangeHRM
 
 📊 CI/CD Integration (Jenkins)
 The project utilizes a 5-stage Jenkins Pipeline to automate the testing lifecycle:
+
 Tool Install - Configures the environment (JDK/Maven).
+
 Checkout - Pulls the latest code from GitHub.
+
 Build & Test - Executes mvn clean test.
+
 Generate Report - Compiles Allure Results into a visual dashboard.
+
 Notifications - Sends automated SMTP email reports upon completion.
 
 
