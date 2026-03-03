@@ -23,7 +23,6 @@ public class BaseTest{
      public void tearDown(){
 
          if(getDriver() != null){
-
                getDriver().quit();
                unload();
 

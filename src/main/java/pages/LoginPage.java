@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import util.GetProperty;
 
 import static base.WebDriverManager.*;
-import static util.GetProperty.*;
 
 
 import java.io.IOException;
@@ -23,6 +22,7 @@ public class LoginPage{
     @FindBy(xpath = "//input[@name=\"username\"]") private WebElement usernameInputField;
     @FindBy(xpath = "//input[@type=\"password\"]") private WebElement passwordInputField;
     @FindBy(xpath = "//button[@type=\"submit\"]") private WebElement loginBtn;
+    @FindBy(xpath = "//p[text()='Invalid credentials']") private WebElement errorMsg;
 
     @FindBy(xpath = "//p[contains(normalize-space(),\"Forgot\")]") private WebElement forgotPasswordLink;
     @FindBy(xpath = "//input[@name=\"username\"]") private WebElement forgetPsrdInputField;
@@ -73,7 +73,7 @@ public class LoginPage{
 
     public boolean verifyForgetPassword() throws IOException {
 
-        forgotPasswordLink.click();
+        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink)).click();
 
         wait.until(ExpectedConditions.visibilityOf(forgetPsrdInputField));
         forgetPsrdInputField.sendKeys(GetProperty.getPropertyValue("username"));
@@ -85,7 +85,7 @@ public class LoginPage{
 
     }
 
-    public String verifyLoginWithMultipleCredentials(String username, String password) throws IOException {
+    public boolean verifyLoginWithInvalidCredentials(String username, String password) throws IOException {
 
         wait.until(ExpectedConditions.visibilityOf(loginBtn));
 
@@ -94,12 +94,11 @@ public class LoginPage{
         loginBtn.click();
 
         try {
-            wait.until(ExpectedConditions.urlContains("dashboard"));
-        }catch (TimeoutException e){
-            e.printStackTrace();
+            wait.until(ExpectedConditions.visibilityOf(errorMsg));
+            return true;
+        } catch (TimeoutException e) {
+            return false;
         }
-
-        return getDriver().getCurrentUrl();
 
     }
 

@@ -24,20 +24,12 @@ public class UserManagementTest extends BaseTest {
     }
 
 
-//    @Test
-//    public void verifyAddUserTesth() throws IOException, InterruptedException {
-//       boolean expRes = true;
-//       boolean actRes = um.verifyAddUser();
-//
-//       Assert.assertEquals(actRes, expRes);
-//
-//    }
-
 
     @DataProvider(name = "UserTestExcelData")
     public Object[][] getData() throws IOException {
         return ReadExcelData.getAllExcelData("TestSheet");
     }
+
 
     @Test(dataProvider = "UserTestExcelData")
     public void verifyAddUserTesth(String role, String name, String status, String user, String pass, String confirmPass) throws IOException, InterruptedException {
