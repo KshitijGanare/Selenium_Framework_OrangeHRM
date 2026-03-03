@@ -73,4 +73,4 @@ The project utilizes a **5-stage Jenkins Pipeline** to automate the testing life
 * ✅ **Clean Builds:** Automatic cleanup of old results via Maven Clean plugin.
 
 
-
+Note: This framework runs against public OrangeHRM demo environment which may occasionally be unstable due to shared usage and API response delays.
