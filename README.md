@@ -9,7 +9,7 @@
 
 This is an enterprise-level Web Automation Framework designed for the **OrangeHRM** application. It leverages the **Page Object Model (POM)** and a robust **CI/CD Pipeline** to ensure continuous quality monitoring.
 
-Key achievements:
+**Key achievements:**
 * **Scalable Execution:** Successfully handling 23 complex test scenarios.
 * **Automated Feedback:** Interactive Allure reports with integrated failure screenshots.
 * **DevOps Ready:** Fully automated logic within a 5-stage Jenkins pipeline.
@@ -31,37 +31,46 @@ Key achievements:
 
 ## 📁 Project Structure
 
-The framework follows a strict Page Object Model:
+The framework follows a modular Page Object Model:
 
 ```text
 Selenium_Framework_OrangeHRM
 ├── src
 │   ├── main/java
 │   │   ├── base            # WebDriverManager & BaseTest
+│   │   ├── config          # Global configurations
 │   │   ├── pages           # Page Objects
-│   │   └── util            # Excel & Property Readers
+│   │   └── util            # Helpers & Utilities
 │   └── test/java
-│       ├── listeners       # AllureListener for screenshots
+│       ├── listeners       # TestNG Listeners
 │       └── tests           # Test Suites
+├── allure-results          # Raw execution data
+├── testng.xml              # Test configuration
 └── pom.xml                 # Maven dependencies
 
+```
+---
 
-📊 CI/CD Integration (Jenkins)
-The project utilizes a 5-stage Jenkins Pipeline:
+## 📊 CI/CD Integration (Jenkins)
 
-Tool Install - Configures environment (JDK/Maven).
+The project utilizes a **5-stage Jenkins Pipeline** to automate the testing lifecycle:
 
-Checkout - Pulls latest code from GitHub.
+### Allure Reporting Dashboard
 
-Build & Test - Executes mvn clean test.
+* **Tool Install** — Configures the environment (JDK/Maven).
+* **Checkout** — Pulls the latest code from GitHub.
+* **Build & Test** — Executes `mvn clean test`.
+* **Generate Report** — Compiles Allure Results into a visual dashboard.
+* **Notifications** — Sends automated SMTP email reports upon completion.
 
-Generate Report - Compiles Allure Results.
+---
 
-Notifications - Sends SMTP email reports.
+## ✨ Best Practices
 
-✨ Best Practices
-✅ Listener Pattern: AllureListener catches failures automatically.
+* ✅ **Listener Pattern:** `AllureListener` catches failures and skips automatically.
+* ✅ **Byte Array Screenshots:** Uses memory-efficient `byte[]` for attaching UI evidence to reports.
+* ✅ **ThreadLocal Driver:** Ensures thread-safety for parallel test execution.
+* ✅ **Clean Builds:** Automatic cleanup of old results via Maven Clean plugin.
 
-✅ Byte Array Screenshots: Efficient memory management for reports.
 
-✅ ThreadLocal Driver: Ensures thread-safety for parallel execution.
+Note: This framework runs against public OrangeHRM demo environment which may occasionally be unstable due to shared usage and API response delays.
