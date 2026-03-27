@@ -18,6 +18,7 @@ public class LoginPageTest extends BaseTest {
         login = new LoginPage();
     }
 
+
     @Test
     public void verifyLoginWithValidCredentialsTest() throws IOException {
         String expUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
@@ -25,6 +26,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertEquals(actUrl, expUrl, "URL Mismatch");
 
     }
+
 
     @Test
     public void verifyLoginWithInvalidCredentialsTest() throws IOException, InterruptedException {
@@ -43,23 +45,23 @@ public class LoginPageTest extends BaseTest {
     }
 
 
-
-    @DataProvider(name = "LoginTestDataProvider")
-    public Object[][] getDataWithProvider() {
+    @DataProvider(name = "invalidLoginData")
+    public Object[][] invalidData() {
         return new Object[][]{
-                {"Admin" , "admin123"},
+                {"12345" , "admin123"},
                 {"user" , "pass123"},
                 {"Test", "10000"},
                 {"Ad min", "     "}
         };
     }
 
-    @Test(dataProvider = "LoginTestDataProvider")
-    public void verifyLoginWithMultipleCredentialsTest(String username, String password) throws IOException {
-        String expUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
-        String actUrl = login.verifyLoginWithMultipleCredentials(username, password);
 
-        Assert.assertEquals(actUrl, expUrl);
+    @Test(dataProvider = "invalidLoginData")
+    public void verifyLoginWithInvalidCredentialsTest(String username, String password) throws IOException {
+        boolean expResult = true;
+        boolean actResult = login.verifyLoginWithInvalidCredentials(username, password);
+
+        Assert.assertEquals(actResult, expResult);
 
     }
 

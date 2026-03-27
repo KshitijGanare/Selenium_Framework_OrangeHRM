@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="All Test Suite" parallel="classes" thread-count="2">
+
+    <listeners>
+        <listener class-name="listeners.AllureListener"/>
+    </listeners>
+
     <test verbose="2" preserve-order="true" name="C:/Users/KshitijRajuGanare/IdeaProjects/Selenium_Framework_OrangeHRMRef">
         <classes>
             <class name="tests.LoginPageTest" />
+            <class name="tests.UserManagementTest" />
         </classes>
     </test>
+
 </suite>
